@@ -42,9 +42,7 @@ var _ = {};
     if (n === undefined) {
       return array[array.length-1];
     }
-    if (n > array.length-1) {
-      return array;
-    }
+    n = n > array.length - 1 ? array.length : n
     return array.slice(array.length-n);
   };
 
