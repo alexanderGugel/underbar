@@ -215,18 +215,13 @@ var _ = {};
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
-    // TODO
-    iterator = iterator || function (element) {
-      return element;
-    };
-    var test = false;
-    _.each(collection, function (element) {
-      // This order makes sense. Otherwise iterator(..) would be executed far too often...
-      if (test || iterator(element)) {
-        test = true;
-      }
-    });
-    return test;
+    // if every item fails the truth test, then _.some should return false, otherwise true
+    if (!iterator) {
+      iterator = _.identity;
+    }
+    return !_.every(collection, function(item) { 
+      return !(iterator(item)); 
+    });  
   };
 
 
