@@ -72,7 +72,7 @@ var _ = {};
     var result = -1;
 
     _.each(array, function(item, index) {
-      if (item === target && result === -1) {
+      if (result === -1 && item === target) {
         result = index;
       }
     });
