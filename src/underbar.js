@@ -420,6 +420,19 @@ var _ = {};
   // Take the difference between one array and a number of other arrays.
   // Only the elements present in just the first array will remain.
   _.difference = function(array) {
+    // TODO Is there are more elegant way to use intersection here?
+    // We need to store the current arguments somehow, since we can't access
+    // them inside an anonymous function.
+    // arguments is not an array. Therefore, we need to convert it into one,
+    // since we need the slice(...) method.
+    // http://www.sitepoint.com/arguments-a-javascript-oddity/
+    var args = Array.prototype.slice.call(arguments);
+    return _.filter(args[0], function (item) {
+      // Returns true, if no args array (except the first one) contains item.
+      return _.every(args.slice(1), function (array) {
+        return array.indexOf(item) === -1;
+      });
+    });
   };
 
 
