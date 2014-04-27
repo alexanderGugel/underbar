@@ -406,8 +406,11 @@ var _ = {};
   // Takes an arbitrary number of arrays and produces an array that contains
   // every item shared between all the passed-in arrays.
   _.intersection = function() {
+    // We need to store the current arguments somehow, since we can't access
+    // them inside an anonymous function.
     var args = arguments;
     return _.filter(args[0], function (item) {
+      // Returns true, if every args array contains item.
       return _.every(args, function (array) {
         return array.indexOf(item) !== -1;
       });
