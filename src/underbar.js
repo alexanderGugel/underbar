@@ -102,13 +102,12 @@ var _ = {};
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
-    var unique = [];
-    _.each(array, function (element) {
-      if (_.indexOf(unique, element) === -1) {
-        unique.push(element);
+    return _.reduce(array, function (uniq, item) {
+      if (_.indexOf(uniq, item) === -1) {
+        uniq.push(item);
       }
-    });
-    return unique;
+      return uniq;
+    }, []);
   };
 
 
