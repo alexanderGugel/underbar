@@ -70,20 +70,18 @@ var _ = {};
     // implemented for you. Instead of using a standard `for` loop, though,
     // it uses the iteration helper `each`, which you will need to write.
     var result = -1;
-
     _.each(array, function(item, index) {
       if (result === -1 && item === target) {
         result = index;
       }
     });
-
     return result;
   };
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
     var passed = [];
-    _.each(collection, function (element) {
+    _.each(collection, function(element) {
       if (test(element)) {
         passed.push(element);
       }
@@ -95,14 +93,14 @@ var _ = {};
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
-    return _.filter(collection, function (element) {
+    return _.filter(collection, function(element) {
       return !test(element);
     });
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
-    return _.reduce(array, function (uniq, item) {
+    return _.reduce(array, function(uniq, item) {
       if (_.indexOf(uniq, item) === -1) {
         uniq.push(item);
       }
