@@ -165,6 +165,10 @@ var _ = {};
   //     return total + number;
   //   }, 0); // should be 6
   _.reduce = function(collection, iterator, accumulator) {
+    // Corner case: empty array/ object
+    if (collection === undefined || collection.length === 0 || Object.keys(collection).length === 0) {
+      return accumulator;
+    }
     if (accumulator === undefined) {
       if (Array.isArray(collection)) {
         accumulator = collection[0];
