@@ -144,9 +144,10 @@ var _ = {};
   _.invoke = function(collection, functionOrKey, args) {
     return _.map(collection, function (element) {
       if (typeof functionOrKey !== 'function') {
-        functionOrKey = element[functionOrKey];
+        return element[functionOrKey].apply(element, args);
+      } else {
+        return functionOrKey.apply(element, args);
       }
-      return functionOrKey.apply(element, args);
     });
   };
 
