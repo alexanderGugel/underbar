@@ -205,11 +205,7 @@ var _ = {};
     }
     // TIP: Try re-using reduce() here.
     return _.reduce(collection, function(state, element) {
-      if (!state || !iterator(element)) {
-        return false;
-      } else {
-        return true;
-      }
+      return !(!state || !iterator(element));
     }, true);
   };
 
