@@ -396,9 +396,9 @@ var _ = {};
   _.flatten = function(nestedArray, result) {
     result = result || [];
     if (Array.isArray(nestedArray)) {
-      for (var i = 0; i < nestedArray.length; i++) {
-        _.flatten(nestedArray[i], result);
-      }
+      _.each(nestedArray, function(val) {
+        _.flatten(val, result);
+      });
     } else {
       result.push(nestedArray);
     }
