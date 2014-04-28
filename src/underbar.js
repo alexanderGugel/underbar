@@ -142,7 +142,7 @@ var _ = {};
   // Calls the method named by methodName on each value in the list.
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
-    return _.map(collection, function (element) {
+    return _.map(collection, function(element) {
       if (typeof functionOrKey !== 'function') {
         return element[functionOrKey].apply(element, args);
       } else {
@@ -173,7 +173,7 @@ var _ = {};
         accumulator = collection[firstKey];
       }
     }
-    _.each(collection, function (element) {
+    _.each(collection, function(element) {
       accumulator = iterator(accumulator, element);
     });
     return accumulator;
@@ -200,7 +200,7 @@ var _ = {};
       }
     }
     // TIP: Try re-using reduce() here.
-    return _.reduce(collection, function (state, element) {
+    return _.reduce(collection, function(state, element) {
       if (!state || !iterator(element)) {
         return false;
       } else {
@@ -243,7 +243,7 @@ var _ = {};
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
     for (var i = 1; i < arguments.length; i++) {
-      _.each(arguments[i], function (value, key) {
+      _.each(arguments[i], function(value, key) {
         obj[key] = value;
       });
     }
@@ -254,7 +254,7 @@ var _ = {};
   // exists in obj
   _.defaults = function(obj) {
     for (var i = 1; i < arguments.length; i++) {
-      _.each(arguments[i], function (value, key) {
+      _.each(arguments[i], function(value, key) {
         if (!obj.hasOwnProperty(key)) {
           obj[key] = value;
         }
@@ -303,7 +303,7 @@ var _ = {};
   // instead if possible.
   _.memoize = function(func) {
     var remember = {};
-    return function (arg) {
+    return function(arg) {
       if (!remember.hasOwnProperty(arg)) {
         remember[arg] = func(arg);
       }
@@ -322,7 +322,7 @@ var _ = {};
     for (var i = 2; i < arguments.length; i++) {
       args.push(arguments[i]);
     }
-    setTimeout(function () {
+    setTimeout(function() {
       func.apply(this, args);
     }, wait);
   };
@@ -408,9 +408,9 @@ var _ = {};
     // We need to store the current arguments somehow, since we can't access
     // them inside an anonymous function.
     var args = arguments;
-    return _.filter(args[0], function (item) {
+    return _.filter(args[0], function(item) {
       // Returns true, if every args array contains item.
-      return _.every(args, function (array) {
+      return _.every(args, function(array) {
         return array.indexOf(item) !== -1;
       });
     });
@@ -426,9 +426,9 @@ var _ = {};
     // since we need the slice(...) method.
     // http://www.sitepoint.com/arguments-a-javascript-oddity/
     var args = Array.prototype.slice.call(arguments);
-    return _.filter(args[0], function (item) {
+    return _.filter(args[0], function(item) {
       // Returns true, if no args array (except the first one) contains item.
-      return _.every(args.slice(1), function (array) {
+      return _.every(args.slice(1), function(array) {
         return array.indexOf(item) === -1;
       });
     });
