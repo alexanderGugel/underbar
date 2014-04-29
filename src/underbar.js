@@ -386,14 +386,13 @@ var _ = {};
   // _.zip(['a','b','c','d'], [1,2,3]) returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
   _.zip = function() {
     var results = [];
-    // Don't use each! Array.isArray(arguments) #=> false
-    for (var j = 0; j < arguments[0].length; j++) {
+    _.each(arguments, function(value, j, arguments) {        
       var arr = [ arguments[0][j] ];
       for (var i = 1; i < arguments.length; i++) {
         arr.push(arguments[i][j]);
       }
       results.push(arr);
-    }
+    });
     return results;
   };
 
