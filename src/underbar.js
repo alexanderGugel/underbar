@@ -175,7 +175,7 @@ var _ = {};
       }
     }
     _.each(collection, function(element) {
-      accumulator = iterator(accumulator, element);
+      accumulator = iterator(accumulator, element, collection);
     });
     return accumulator;
   };
