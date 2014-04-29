@@ -467,6 +467,19 @@ var _ = {};
   //
   // See the Underbar readme for details.
   _.throttle = function(func, wait) {
+    // TODO Finish (fails 1st test)
+    var first = true;
+    var lastReturned, called;
+    
+    return function() {
+      var now = new Date().getTime();
+      if (first || (now-called) >= wait) {
+        first = false;
+        called = now;
+        lastReturned = func.apply(this, arguments);
+      }
+      return lastReturned;
+    }
   };
 
 }).call(this);
