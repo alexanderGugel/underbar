@@ -115,7 +115,7 @@ var _ = {};
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
     var results = [];
-    _.each(collection, function (element, index) {
+    _.each(collection, function(element, index) {
       results[index] = iterator(element);
     });
     return results;
@@ -199,7 +199,7 @@ var _ = {};
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
     if (iterator === undefined) {
-      iterator = function (element) {
+      iterator = function(element) {
         return element;
       }
     }
