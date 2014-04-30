@@ -3,7 +3,8 @@
 var _ = {};
 
 (function() {
-
+  'use strict';
+  
   // Returns whatever value is passed as the argument. This function doesn't
   // seem very useful, but remember it--if a function needs to provide an
   // iterator when the user does not pass one in, this will be handy.
@@ -298,7 +299,7 @@ var _ = {};
         remember[arg] = func(arg);
       }
       return remember[arg];
-    }
+    };
   };
 
   // Delays a function for the given number of milliseconds, and then calls
@@ -358,7 +359,7 @@ var _ = {};
       var prop = iterator;
       iterator = function(item) {
         return item[prop];
-      }
+      };
     }
     var criterions = {};
     _.each(collection, function(obj) {
@@ -383,10 +384,11 @@ var _ = {};
   // _.zip(['a','b','c','d'], [1,2,3]) returns [['a',1], ['b',2], ['c',3], ['d',undefined]]
   _.zip = function() {
     var results = [];
-    _.each(arguments, function(value, j, arguments) {        
-      var arr = [ arguments[0][j] ];
-      for (var i = 1; i < arguments.length; i++) {
-        arr.push(arguments[i][j]);
+    var args = arguments;
+    _.each(args, function(value, j, args) {
+      var arr = [ args[0][j] ];
+      for (var i = 1; i < args.length; i++) {
+        arr.push(args[i][j]);
       }
       results.push(arr);
     });
@@ -425,7 +427,7 @@ var _ = {};
 
   // Take the difference between one array and a number of other arrays.
   // Only the elements present in just the first array will remain.
-  _.difference = function(array) {
+  _.difference = function() {
     // TODO Is there are more elegant way to use intersection here?
     // We need to store the current arguments somehow, since we can't access
     // them inside an anonymous function.
@@ -464,7 +466,7 @@ var _ = {};
         lastReturned = func.apply(this, arguments);
       }
       return lastReturned;
-    }
+    };
   };
 
 }).call(this);
