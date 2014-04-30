@@ -231,12 +231,12 @@ var _ = {};
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
     // arguments is not an array. Therefore it does not have an slice method!
-    for (var i = 1; i < arguments.length; i++) {
-      _.each(arguments[i], function(value, key) {
+    return _.reduce(arguments, function(obj, arg) {
+      _.each(arg, function(value, key) {
         obj[key] = value;
       });
-    }
-    return obj;
+      return obj;
+    }, obj);
   };
 
   // Like extend, but doesn't ever overwrite a key that already
