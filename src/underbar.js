@@ -385,7 +385,7 @@ var _ = {};
   _.zip = function() {
     var results = [];
     var args = arguments;
-    _.each(args, function(value, j, args) {
+    _.each(args, function(value, j) {
       var arr = [ args[0][j] ];
       for (var i = 1; i < args.length; i++) {
         arr.push(args[i][j]);
