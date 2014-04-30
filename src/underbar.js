@@ -454,7 +454,6 @@ var _ = {};
   //
   // See the Underbar readme for details.
   _.throttle = function(func, wait) {
-    // TODO Finish (fails 1st test)
     var first = true;
     var lastReturned, called;
     
@@ -471,6 +470,8 @@ var _ = {};
         setTimeout(function() {
           called = new Date().getTime();
           lastReturned = func.apply(this, arguments);
+          // wait or remaining time until wait-period is over?
+          // wait works, but wait-(now-called) would make more sense...
         }, wait);
       }
       return lastReturned;
