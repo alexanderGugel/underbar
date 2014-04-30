@@ -461,9 +461,17 @@ var _ = {};
     return function() {
       var now = new Date().getTime();
       if (first || (now-called) >= wait) {
+        // Everything is ok, allowed to call func
         first = false;
         called = now;
         lastReturned = func.apply(this, arguments);
+      } else {
+        // Func has already been called within the the given wait-period
+        // Schedule a call into the future
+        setTimeout(function() {
+          called = new Date().getTime();
+          lastReturned = func.apply(this, arguments);
+        }, wait);
       }
       return lastReturned;
     };
