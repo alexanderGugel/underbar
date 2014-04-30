@@ -242,14 +242,14 @@ var _ = {};
   // exists in obj
   _.defaults = function(obj) {
     // Is there a more elegant way to reuse extend here?
-    for (var i = 1; i < arguments.length; i++) {
-      _.each(arguments[i], function(value, key) {
+    return _.reduce(Array.prototype.slice.call(arguments, 1), function(obj, arg) {
+      _.each(arg, function(value, key) {
         if (!obj.hasOwnProperty(key)) {
           obj[key] = value;
         }
       });
-    }
-    return obj;    
+      return obj;
+    }, obj);
   };
 
 
