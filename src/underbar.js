@@ -4,7 +4,7 @@ var _ = {};
 
 (function() {
   'use strict';
-  
+
   // Returns whatever value is passed as the argument. This function doesn't
   // seem very useful, but remember it--if a function needs to provide an
   // iterator when the user does not pass one in, this will be handy.
@@ -41,7 +41,7 @@ var _ = {};
   // last element.
   _.last = function(array, n) {
     n > array.length && (n = array.length);
-    return n === undefined ? array[array.length-1] : array.slice(array.length-n);
+    return n === undefined ? array[array.length - 1] : array.slice(array.length - n);
   };
 
   // Call iterator(value, key, collection) for each element of collection.
@@ -131,7 +131,7 @@ var _ = {};
     // TIP: map is really handy when you want to transform an array of
     // values into a new array of values. _.pluck() is solved for you
     // as an example of this.
-    return _.map(collection, function(item){
+    return _.map(collection, function(item) {
       return item[key];
     });
   };
@@ -206,9 +206,9 @@ var _ = {};
     // TIP: There's a very clever way to re-use every() here.
     // if every item fails the truth test, then _.some should return false, otherwise true
     iterator = iterator ? iterator : _.identity;
-    return !_.every(collection, function(item) { 
-      return !(iterator(item)); 
-    });  
+    return !_.every(collection, function(item) {
+      return !(iterator(item));
+    });
   };
 
 
@@ -334,7 +334,7 @@ var _ = {};
     //     j ← random integer with 0 ≤ j ≤ i
     //     exchange a[j] and a[i]
     for (var i = copy.length - 1; i >= 1; i--) {
-      var j = Math.round(i*Math.random());
+      var j = Math.round(i * Math.random());
       var memo = copy[i];
       copy[i] = copy[j];
       copy[j] = copy[memo];
@@ -367,7 +367,7 @@ var _ = {};
       if (!Array.isArray(criterions[criterion])) {
         criterions[criterion] = [];
       }
-      criterions[criterion].push(obj);        
+      criterions[criterion].push(obj);
     });
     var sortedCriterions = Object.keys(criterions).sort();
     var sortedObjects = _.map(sortedCriterions, function(criterion) {
@@ -386,7 +386,7 @@ var _ = {};
     var results = [];
     var args = arguments;
     _.each(args, function(value, j) {
-      var arr = [ args[0][j] ];
+      var arr = [args[0][j]];
       for (var i = 1; i < args.length; i++) {
         arr.push(args[i][j]);
       }
@@ -456,10 +456,10 @@ var _ = {};
   _.throttle = function(func, wait) {
     var first = true;
     var lastReturned, called;
-    
+
     return function() {
       var now = new Date().getTime();
-      if (first || (now-called) >= wait) {
+      if (first || (now - called) >= wait) {
         // Everything is ok, allowed to call func
         first = false;
         called = now;
